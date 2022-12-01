@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.github.elxreno.funquiz_client.ui.auth.AuthViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.register.RegisterActivity">
+
+        <TextView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text="@string/register"
+            android:textSize="48sp" />
+
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/banner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="8dp"
+            android:autofillHints="username"
+            android:enabled="@{!viewModel.registerUiState.isRegistering}"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:padding="8dp"
+            android:text="@={viewModel.username}"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUsername"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:autofillHints="emailAddress"
+            android:enabled="@{!viewModel.registerUiState.isRegistering}"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:text="@={viewModel.email}"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextEmail"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:autofillHints="password"
+            android:enabled="@{!viewModel.registerUiState.isRegistering}"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:text="@={viewModel.password}"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextPasswordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextPassword"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:autofillHints="password"
+            android:enabled="@{!viewModel.registerUiState.isRegistering}"
+            android:hint="@string/passwordConfirm"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:text="@={viewModel.passwordConfirm}"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextPasswordConfirm"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:enabled="@{viewModel.registerUiState.fieldsValid &amp;&amp; !viewModel.registerUiState.isRegistering}"
+            android:onClick="@{() -> viewModel.register()}"
+            android:text="@string/register"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</layout>

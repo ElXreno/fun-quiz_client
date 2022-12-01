@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.github.elxreno.funquiz_client.ui.auth.AuthViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.login.LoginActivity">
+
+        <TextView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textSize="48sp" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/banner"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="8dp"
+            android:autofillHints="emailAddress"
+            android:enabled="@{!viewModel.authUiState.loggingIn}"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:text="@={viewModel.email}"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextEmail"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:autofillHints="password"
+            android:enabled="@{!viewModel.authUiState.loggingIn}"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:text="@={viewModel.password}"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextPassword"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:enabled="@{!viewModel.authUiState.networkError &amp;&amp; !viewModel.authUiState.invalidCredentials &amp;&amp; !viewModel.authUiState.loggingIn &amp;&amp; viewModel.authUiState.fieldsValid}"
+            android:onClick="@{() -> viewModel.login()}"
+            android:text="@string/login"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginButton"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:enabled="@{!viewModel.authUiState.loggingIn || !viewModel.authUiState.loginSuccess}"
+            android:text="@string/register"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/loginAsGuestButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/registerButton"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:enabled="@{!viewModel.authUiState.loggingIn &amp;&amp; !viewModel.authUiState.isLoginSuccess &amp;&amp; !viewModel.authUiState.fetchingPasswordRequirements}"
+            android:onClick="@{() -> viewModel.loginAsGuest()}"
+            android:text="@string/login_as_guest"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</layout>

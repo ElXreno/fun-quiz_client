@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@id/quizzesDashboardFragment"
+            android:icon="@drawable/round_dashboard"
+            android:title="@string/dashboard_title" />
+        <item
+            android:id="@id/usersFragment"
+            android:icon="@drawable/round_supervised_user_circle"
+            android:title="@string/users_title" />
+    </group>
+
+</menu>

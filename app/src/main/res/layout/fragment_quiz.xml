@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.quiz.fragment.QuizFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutQuizName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextQuizName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/quiz_name"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/bannerQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutQuizName"
+        android:text="@string/questions"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <com.github.elxreno.funquiz_client.ui.NonScrollExpandableListView
+        android:id="@+id/expandableListViewQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bannerQuestions" />
+
+    <Button
+        android:id="@+id/buttonAddQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expandableListViewQuestions"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_question" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchIsPublic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonAddQuestion"
+        android:layout_alignParentEnd="true"
+        android:text="@string/public_access" />
+
+</RelativeLayout>
